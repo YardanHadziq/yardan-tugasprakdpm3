@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import Fix from './components/fix';
+import Wrap from './components/wrap';
+import Profile from './components/Profile';
+import PostList from './components/FlatList';
 
-export default function App() {
+const App = () => {
+  const posts = [
+    { content: 'Tugassssss.', timestamp: '2h ago' },
+    { content: 'Pertemuan 3!', timestamp: '1d ago' },
+    { content: 'Praktikum DPM...', timestamp: '3d ago' },
+  ];
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Fix>
+        <Profile />
+        <Wrap>
+          <PostList posts={posts} />
+        </Wrap>
+      </Fix>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#f8f9fa',
   },
 });
+
+export default App;
